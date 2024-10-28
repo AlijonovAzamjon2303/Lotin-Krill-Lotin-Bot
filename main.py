@@ -1,12 +1,23 @@
 from transliterate import to_cyrillic, to_latin
 import telebot
 
-TOKEN = '6542995913:AAHoafmHxnCXrqo1K8nmOgouuMdozlq6XNE'
-bot = telebot.TeleBot(TOKEN, parse_mode=None)
+TOKEN = "6542995913:AAGeG2dfcuZJ6tSZ6ShTy-KjSgWm01tqSuk"
+bot = telebot.TeleBot(TOKEN)
 
-matn = input("Matn kiriting : ")
+@bot.message_handler(commands=["start"])
+def send_welcome(message):
+    username = (
+        message.from_user.username
+    )  # Bu usul bilan foydalanuvchi nomini olishimiz mumkin
+    xabar = f"Assalom alaykum, {username} Kirill-Lotin-Kirill botiga xush kelibsiz!"
+    xabar += "\nMatningizni yuboring."
+    bot.reply_to(message, xabar)
 
-if matn.isascii():
-    print(to_cyrillic(matn))
-else:
-    print(to_latin(matn))
+bot.polling()
+
+# matn = input("Matn kiriting : ")
+
+# if matn.isascii():
+#     print(to_cyrillic(matn))
+# else:
+#     print(to_latin(matn))
