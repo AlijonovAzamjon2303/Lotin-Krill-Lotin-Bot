@@ -1,7 +1,7 @@
 from transliterate import to_cyrillic, to_latin
 import telebot
 
-TOKEN = "6542995913:AAGeG2dfcuZJ6tSZ6ShTy-KjSgWm01tqSuk"
+TOKEN = "Bu yerga Botingizni Tokenini joylashtirsiz"
 bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=["start"])
