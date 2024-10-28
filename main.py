@@ -13,11 +13,10 @@ def send_welcome(message):
     xabar += "\nMatningizni yuboring."
     bot.reply_to(message, xabar)
 
+@bot.message_handler(func = lambda msg : msg.text is not None)
+def trnslit(message):
+    msg = message.text
+    javob = lambda msg : to_cyrillic(msg) if msg.isascii() else to_latin(msg)
+    bot.reply_to(message, javob(msg))
+
 bot.polling()
-
-# matn = input("Matn kiriting : ")
-
-# if matn.isascii():
-#     print(to_cyrillic(matn))
-# else:
-#     print(to_latin(matn))
